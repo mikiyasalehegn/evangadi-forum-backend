@@ -5,7 +5,6 @@ const { StatusCodes } = require("http-status-codes");
 async function askQuestion(req, res) {
   const { title, content } = req.body;
   const user_id = req.user.userId;
-  console.log(req.user);
 
   if (!title || !content) {
     return res.status(StatusCodes.BAD_REQUEST).json({
