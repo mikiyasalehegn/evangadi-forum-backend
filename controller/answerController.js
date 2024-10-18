@@ -67,7 +67,6 @@ const editAnswer = async (req, res) => {
       [answerId]
     );
 
-    console.log(existingAnswer.rows);
     if (existingAnswer.rows.length === 0) {
       return res
         .status(404)
@@ -99,11 +98,10 @@ const deleteAnswer = async (req, res) => {
   const answerId = req.params.answerId;
   const username = req.user.username;
   const checkAnswer = `SELECT * FROM answers WHERE answer_id = $1`;
-  console.log(answerId);
 
   try {
     const existingAnswer = await db.client.query(checkAnswer, [answerId]);
-    console.log(existingAnswer);
+    
     if (existingAnswer.rows.length === 0) {
       return res
         .status(404)
