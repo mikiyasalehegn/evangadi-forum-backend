@@ -8,7 +8,7 @@ const client = new Pool({
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
   ssl: {
-    rejectUnauthorized: false, // Set to true in production for better security
+    rejectUnauthorized: process.env.SSL_REJECT_UNAUTHORIZED === "true", 
   },
 });
 
