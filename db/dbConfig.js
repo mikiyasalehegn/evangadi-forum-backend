@@ -7,6 +7,9 @@ const client = new Pool({
   port: process.env.PGPORT,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
+  ssl: {
+    rejectUnauthorized: process.env.SSL_REJECT_UNAUTHORIZED === "true", 
+  },
 });
 
 async function connectToDb() {
